@@ -4,7 +4,8 @@ const connectDB = require("./config/db");
 const Contract = require("./models/contract");
 const generateContract = require("./llm")
 const app = express();
-app.use(cors());
+app.use(cors({ origin: "*", methods: ["GET","POST","PUT","DELETE","OPTIONS"] }));
+
 app.use(express.json());
 
 connectDB();
@@ -67,5 +68,7 @@ Return only the full contract text. Do not include explanations, notes, or surro
     }
 });
 
-const PORT = process.env.PORT
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+const PORT = process.env.PORT || 8081
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
+});
