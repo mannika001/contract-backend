@@ -4,7 +4,11 @@ const connectDB = require("./config/db");
 const Contract = require("./models/contract");
 const generateContract = require("./llm")
 const app = express();
-app.use(cors({ origin: "*", methods: ["GET","POST","PUT","DELETE","OPTIONS"] }));
+app.use(cors({
+  origin: "http://localhost:3000", 
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+}));
 
 app.use(express.json());
 
