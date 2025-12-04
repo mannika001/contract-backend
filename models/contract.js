@@ -9,6 +9,8 @@ const ContractSchema = new mongoose.Schema(
      endDate: String,
     scope: String,
     extraClauses: String,
+    status: { type: String, default: "pending" },
+     content: { type: String, default: "" },
     tone: String,
   },
   { timestamps: true }
